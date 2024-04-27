@@ -1,3 +1,5 @@
+import { MongoClient } from "mongodb";
+
 export default function Home() {
   async function formAction(formData) {
     "use server";
@@ -15,8 +17,34 @@ export default function Home() {
       rawFormData.songTitle.length > 0 &&
       rawFormData.songTitle.length > 0
     ) {
-      // work with file
-      console.log(rawFormData);
+      // Read the contents of the songFile
+      const fileText = await rawFormData.songFile.text();
+
+      // Create a MongoDB client
+      const client = new MongoClient(process.env.MONGODB_URI);
+
+      try {
+        // Connect to the MongoDB database
+        await client.connect();
+        const db = client.db(process.env.MONGODB_DB_NAME);
+        const collection = db.collection("analysis");
+
+        // Create the entry key
+        const entryKey = `${rawFormData.songTitle}-${rawFormData.songArtist}`;
+
+        // Insert the entry into MongoDB
+        await collection.insertOne({
+          id: entryKey,
+          lyrics: fileText,
+        });
+
+        console.log("Entry added to MongoDB");
+      } catch (error) {
+        console.error("Error adding entry to MongoDB:", error);
+      } finally {
+        // Close the MongoDB connection
+        await client.close();
+      }
     }
     // otherwise throw an error
   }
