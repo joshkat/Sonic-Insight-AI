@@ -3,6 +3,7 @@ import { MongoClient } from "mongodb";
 export default function Home() {
   async function formAction(formData) {
     "use server";
+    console.log("We clicked submit");
     const rawFormData = {
       songTitle: formData.get("songTitle"), // this is the title
       songArtist: formData.get("songArtist"), // this is the artist
@@ -56,7 +57,7 @@ export default function Home() {
           className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4"
           action={formAction}
         >
-          <div class="flex flex-col gap-6">
+          <div className="flex flex-col gap-6">
             <div>
               <label
                 className="block text-gray-700 text-sm font-bold"
