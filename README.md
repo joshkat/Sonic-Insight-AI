@@ -7,9 +7,12 @@ This project aims to provide annotations for song lyrics using AI, leveraging th
 - **Interactive Interface**: Users can input title and artist and receive annotated outputs through an intuitive and user-friendly interface.
 
 ## Technologies Used
-- **ChatGPT API**: Utilized for generating annotations and insights.
-- **Python**: Used for the script to get the lyrics.
-- **Next.js**: Used for the front-end and backend
+| Front End | Back End |
+| --------- | -------- |
+| [React](https://react.dev/) |[Next.js](https://nextjs.org/)|
+| [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |[Python](https://www.python.org/)|
+| [Tailwind](https://tailwindcss.com/)||
+
 1. **Input title and artist**: Users can input a title and artist and then we will find the song and get the lyrics.
 2. **Analyze**: The system sends the lyrics to the ChatGPT API for analysis.
 3. **View Annotations**: The annotated lyrics are displayed to the user, providing insights and interpretations.
