@@ -11,7 +11,7 @@ This project aims to provide annotations for song lyrics using AI, leveraging th
 ## Technologies Used
 | Front End | Back End |
 | --------- | -------- |
-| [React](https://react.dev/) / [Vite](https://vitejs.dev/) |[Node](https://nodejs.org/docs/latest/api/) / [Express](https://expressjs.com/)|
+| [React](https://react.dev/) |[Next.js](https://nextjs.org/)|
 | [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |[Python](https://www.python.org/)|
 | [Tailwind](https://tailwindcss.com/)||
 
