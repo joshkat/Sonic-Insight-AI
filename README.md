@@ -8,9 +8,8 @@ This project aims to provide annotations for song lyrics using AI, leveraging th
 - **Customization**: The system allows users to customize the depth and style of annotations according to their preferences.
 ## Technologies Used
 - **ChatGPT API**: Utilized for generating annotations and insights.
-- **Python**: The backend is built using Python for handling API requests and responses.
-- **HTML/CSS/JavaScript**: The frontend interface is developed using standard web technologies for a seamless user experience.
-## Usage
+- **Python**: Used for the script to get the lyrics.
+- **Next.js**: Used for the front-end and backend
 1. **Input Lyrics**: Users can input song lyrics either through a text input or by uploading a file.
 2. **Analyze**: The system sends the lyrics to the ChatGPT API for analysis.
 3. **View Annotations**: The annotated lyrics are displayed to the user, providing insights and interpretations.
