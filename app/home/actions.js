@@ -109,10 +109,16 @@ export async function formAction(formData) {
     messages: [{ role: "system", content: `I will give you this song, give me back an analysis in this format. each segment is 5 lines long so like line5-10:analysis. dont be lazy. start from line1 : line#-line#: analysis of the line. Song lyrics: 
     
     `+fileText }],
-    model: "gpt-4-turbo",
+    model: "gpt-4o",
   });
 
   console.log(completion.choices);
   const content = completion.choices[0].message.content;
-  return content;
+    // Add line numbers to the lyrics
+  const lyricsWithLineNumbers = fileText
+  .split("\n")
+  .map((line, index) => `${index + 1}. ${line}`)
+  .join("\n");
+
+  return [lyricsWithLineNumbers, content];
 }

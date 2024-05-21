@@ -1,15 +1,23 @@
 // page.jsx
+
 "use client";
 
 import { useState } from 'react';
+
 import { formAction1, formAction } from './actions';
 
 export default function Home() {
-  const [response, setResponse] = useState(null);
+
+  const [response1, setResponse1] = useState(null);
+  const [response2, setResponse2] = useState(null);
 
   async function handleFormAction(formData) {
-    const content = await formAction(formData);
-    setResponse(content);
+    // const content1 = await formAction1(formData);
+    const [lyrics, analysis] = await formAction(formData);
+    console.log("lyrics is " + lyrics);
+    console.log("analysis is " + analysis);
+    setResponse1(lyrics);
+    setResponse2(analysis);
   }
 
   return (
@@ -70,11 +78,20 @@ export default function Home() {
           </div>
         </form>
       </div>
-
-      {response && (
-        <div className="w-full max-w-2xl mt-8">
-          <h2 className="text-2xl font-bold mb-4">Analysis:</h2>
-          <pre className="bg-white shadow-lg rounded px-8 py-6 mb-4 overflow-x-auto whitespace-pre-wrap">{response}</pre>
+      {(response1 && response2) && (
+        <div className="w-full max-w-4xl mt-8 flex justify-between">
+          {response1 && (
+            <div className="w-1/2 pr-4">
+              <h2 className="text-2xl font-bold mb-4">Lyrics:</h2>
+              <pre className="bg-white shadow-lg rounded px-8 py-6 mb-4 overflow-x-auto whitespace-pre-wrap">{response1}</pre>
+            </div>
+          )}
+          {response2 && (
+            <div className="w-1/2 pl-4">
+              <h2 className="text-2xl font-bold mb-4">Analysis:</h2>
+              <pre className="bg-white shadow-lg rounded px-8 py-6 mb-4 overflow-x-auto whitespace-pre-wrap">{response2}</pre>
+            </div>
+          )}
         </div>
       )}
     </div>
