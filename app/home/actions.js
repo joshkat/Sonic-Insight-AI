@@ -104,6 +104,10 @@ export async function formAction(formData) {
     });
 
   console.log("File text is " + fileText);
+  if(fileText==""){
+    return ["Could not find song", "No song lyrics provided"];
+
+  }
   console.log("CHAT GPT ANALYSIS BELOW")
   const completion = await openai.chat.completions.create({
     messages: [{ role: "system", content: `I will give you this song, give me back an analysis in this format. each segment is 5 lines long so like line5-10:analysis. dont be lazy. start from line1 : line#-line#: analysis of the line. Song lyrics: 
