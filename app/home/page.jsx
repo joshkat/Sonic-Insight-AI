@@ -9,6 +9,9 @@ export default function Home() {
   const [response2, setResponse2] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [title, setTitle] = useState(null);
+  const [artist, setArtist] = useState(null);
+
   async function handleSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
@@ -18,8 +21,17 @@ export default function Home() {
     const [lyrics, analysis] = await formAction(formData);
     console.log("lyrics is " + lyrics);
     console.log("analysis is " + analysis);
+    const rawFormData = {
+      songTitle: formData.get("songTitle"),
+      songArtist: formData.get("songArtist"),
+      songFile: formData.get("songFile"),
+    };
+    setTitle(rawFormData.songTitle);
+    setArtist(rawFormData.songArtist);
     setResponse1(lyrics);
     setResponse2(analysis);
+
+    
     setIsLoading(false);
   }
 
@@ -116,13 +128,13 @@ export default function Home() {
         <div className="w-full px-4 mt-8 flex flex-col md:flex-row justify-between">
           {response1 && (
             <div className="w-full md:w-1/2 md:pr-4 mb-8 md:mb-0">
-              <h2 className="text-2xl font-bold mb-4">Lyrics:</h2>
+              <h2 className="text-2xl font-bold mb-4">{title} by {artist} lyrics:</h2>
               <pre className="bg-white shadow-lg rounded px-8 py-6 overflow-x-auto whitespace-pre-wrap">{response1}</pre>
             </div>
           )}
           {response2 && (
             <div className="w-full md:w-1/2 md:pl-4">
-              <h2 className="text-2xl font-bold mb-4">Analysis:</h2>
+              <h2 className="text-2xl font-bold mb-4">Analysis for {title} by {artist}:</h2>
               <pre className="bg-white shadow-lg rounded px-8 py-6 overflow-x-auto whitespace-pre-wrap">{response2}</pre>
             </div>
           )}
