@@ -24,17 +24,14 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center min-h-screen py-8">
+    <div className="flex flex-col items-center min-h-screen py-8 bg-gradient-to-br from-purple-500 via-blue-500 to-pink-500">
       <div className="flex items-center mb-8">
-        <Image src="/sonicInsightLogo2.png" alt="Sonic Insight Logo" width={250} height={200} />
-        {/* <h1 className="text-4xl font-bold ml-4">Sonic Insight</h1> */}
+        <div className="rounded-lg overflow-hidden shadow-lg">
+          <Image src="/sonicInsightLogo2.png" alt="Sonic Insight Logo" width={250} height={200} />
+        </div>
       </div>
-      <div className="w-full max-w-2xl">
-
-        <form
-          className="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4"
-          onSubmit={handleSubmit}
-        >
+      <div className="w-full max-w-2xl bg-white p-8 rounded-lg shadow-lg mb-8">
+        <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-6">
             <div>
               <label
