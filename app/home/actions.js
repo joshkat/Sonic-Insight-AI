@@ -80,6 +80,10 @@ export async function getLyrics(songName, artistName) {
 }
 
 export async function formAction(formData) {
+  if(process.env.GENIUS==null || process.env.OPENAI_API_KEY === null  )
+    {
+      return ["No lyrics because no GENIUS API key was given", "No analysis because no AI analysis key was given"];
+    }
   const openai = new OpenAI();  
   console.log("analyzing song");
 
